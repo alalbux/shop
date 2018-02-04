@@ -2,8 +2,10 @@ import React from 'react';
 
 const Home = () => (
   <div>
-    <h1>Teste de uso</h1>
-    <p>ProductList, Product detalis, Checkout</p>
+    <section className='home'>
+      <h1>Shop</h1>
+      <p>Lista, detalhe do produto e checkout</p>
+    </section>
   </div>
 )
 
