@@ -7,7 +7,7 @@ import ProductDetails from './ProductDetails';
 const Product = () => (
   <Switch>
     <Route exact path='/product' component={ProductList}/>
-    <Route path='/product/:number' component={ProductDetails}/>
+    <Route path='/product/:id' component={ProductDetails}/>
   </Switch>
   
 )
