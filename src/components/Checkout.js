@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Home = () => (
+const Checkout = () => (
   <div>
     <section className='home'>
       <h1>Shop</h1>
@@ -9,4 +9,4 @@ const Home = () => (
   </div>
 )
 
-export default Home
+export default Checkout
