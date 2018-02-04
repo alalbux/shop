@@ -6,7 +6,7 @@ const Header = () => (
     <nav>
       <ul>
         <li><Link to='/'>Shop</Link></li>
-        <li><Link to='/product'>Products</Link></li>
+        <li><Link to='/checkout'>Carrinho</Link></li>
       </ul>
     </nav>
   </header>

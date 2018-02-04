@@ -13,7 +13,7 @@ const ProductDetails = (props) => {
     <div>
       <h1>{item.name}</h1>
       <h2>price: {item.price}</h2>
-      <Link to='/product'>Back</Link>
+      <Link to='/'>Back</Link>
     </div>
   )
 }
