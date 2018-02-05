@@ -9,7 +9,5 @@ const Api = {
     }
   }
 
-console.log(Api.all());
-
 export default Api
   
