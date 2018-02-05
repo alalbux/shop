@@ -15,11 +15,11 @@
 }
 .modal-content {
     background-color: #fefefe;
-    margin: 10% auto;
+    margin: 5% auto;
     padding: 20px;
     border: 1px solid #888;
     width: 60%;
-    height: 50%; 
+    height: auto; 
 }
 .close {
     color: #aaa;
@@ -28,6 +28,20 @@
     font-weight: bold;
 }
 
+.info {
+    h4 {
+        margin-bottom: 4px;
+    }
+}
+.compra {
+    text-align: center;
+}
+.button {
+    background: #000000;
+    color: #ffffff;
+    padding: 16px;
+    margin: 8px auto;
+}
 .close:hover,
 .close:focus {
     color: black;
