@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Product from './Product';
 import Button from './Button';
 
-const Cart = ({products, removeProductCart}) => {
+const Cart = ({products, remove}) => {
   const total = products.map(product => product.price).reduce((previousPrice, currentPrice) => previousPrice + currentPrice, 0)
 
   return (
@@ -17,7 +17,7 @@ const Cart = ({products, removeProductCart}) => {
             {
             products.map(product => (
                 <Product key={product.id} product={product}>
-                <button onClick={() => removeProductCart(product.id)} className="remove">&times;</button>
+                <button onClick={() => remove(product.id)} className="remove">&times;</button>
                 </Product>
             ))
             }
@@ -38,6 +38,7 @@ const Cart = ({products, removeProductCart}) => {
 
 Cart.propTypes = {
   products: PropTypes.array.isRequired,
+  remove: PropTypes.func.isRequired
 }
 
 Cart.defaultProps = {
