@@ -16,7 +16,7 @@ const Cart = ({products, removeProduct}) => {
             {
             products.map(product => (
                 <Product key={product.id} product={product}>
-                <button onClick={() => removeProduct(product.id)} className="product-remove">&times;</button>
+                <button onClick={() => removeProduct(product.id)} className="remove">&times;</button>
                 </Product>
             ))
             }

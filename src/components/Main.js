@@ -1,5 +1,5 @@
 import React from 'react';
-import ProductAPI from '../api';
+import Api from './Api';
 import Product  from './Product';
 import Cart from './Cart';
 import Button from './Button';
@@ -10,7 +10,7 @@ class Main extends React.Component {
     super()
 
     this.state = {
-      products: ProductAPI,
+      products: Api,
       
       modalProduct: {
         product: {},
@@ -84,7 +84,7 @@ class Main extends React.Component {
         this.setState({
           cart: {
             ...cart,
-            products: cart.products.filter(product => product._id !== productId)
+            products: cart.products.filter(product => product.id !== productId)
           }
         })
     }
@@ -108,10 +108,9 @@ class Main extends React.Component {
         {modalProduct.visible &&
           <Modal visible={modalProduct.visible}>
             <Product product={modalProduct.product}>
-              <button className="product-close" onClick={this.closeModal}>&times;</button>
-              <div className="product-info">
-                <small>{modalProduct.product.category} - vendido por: <strong>vendedor</strong></small>
-                  {modalProduct.product.description}
+              <button className="close" onClick={this.closeModal}>&times;</button>
+              <div className="info">
+                  {modalProduct.product.name}
                 </div>
               <Button onClick={() => this.addProductCart(modalProduct.product)}>Comprar</Button>
             </Product>
