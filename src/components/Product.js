@@ -1,8 +1,6 @@
 import React from 'react';
 import ProductAPI from '../api';
 import { Link } from 'react-router-dom';
-import ProductList from './ProductList';
-import ProductDetails from './ProductDetails';
 
 
 const Product = () => (
