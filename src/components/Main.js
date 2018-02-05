@@ -6,10 +6,7 @@ import Cart from './Cart';
 import Checkout from './Checkout';
 
 console.log(Route);
-
-class Main extends React.PureComponent {
-  render () {
-        return (      
+const Main = () => (      
         <main>
           <Switch>
             <Route exact path='/' component={Product}/>
@@ -19,7 +16,4 @@ class Main extends React.PureComponent {
           </Switch>
         </main>
     )
-  }
-}
-
 export default Main
