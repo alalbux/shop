@@ -2,9 +2,9 @@ import React from 'react';
 import ProductAPI from '../api';
 import { Switch, Route } from 'react-router-dom';
 import Product  from './Product';
-import ProductDetails from './ProductDetails';
 import Cart from './Cart';
-import Checkout from './Checkout';
+import Button from './Button';
+import Modal from './Modal';
 
 class Main extends React.Component {
   constructor () {
@@ -12,29 +12,74 @@ class Main extends React.Component {
 
     this.state = {
       products: ProductAPI,
+      
+      modalProduct: {
+        product: {},
+        visible: false
+      },
 
       cart: {
-        products: []
+        products: [],
+        visible: false
       }
     }
 
-    //this.details = this.details.bind(this);
+    this.handleModal = this.handleModal.bind(this)
+    this.addProductCart = this.addProductCart.bind(this)
+    this.closeModal = this.closeModal.bind(this)
+    this.toggleVisibility = this.toggleVisibility.bind(this)
+    this.removeProductCart = this.removeProductCart.bind(this)
   }
 
-  addProduct (product) {
-    const { cart } = this.state
+  handleModal (product) {
+    const { modalProduct } = this.state
+
+    this.setState({
+      modalProduct: {
+        product,
+        visible: !modalProduct.visible
+      }
+    })
+  }
+
+  addProductCart (product) {
+    const { cart, modalProduct } = this.state
     product = {...product}
 
     this.setState({
       cart: {
         products: [...cart.products, product]
+      },
+      modalProduct: {
+        ...modalProduct,
+        visible: false
       }
     })
-
-    this.addProductCart = this.addProductCart.bind(this)
-    //this.removeProductFromCart = this.removeProductFromCart.bind(this
   }
-  removeProduct (productId) {
+
+  toggleVisibility () {
+    const { cart } = this.state
+
+    this.setState({
+      cart: {
+        ...cart,
+        visible: !cart.visible
+      }
+    })
+  }
+  
+  closeModal () {
+    const { modalProduct } = this.state
+
+    this.setState({
+      modalProduct: {
+        ...modalProduct,
+        visible: false
+      }
+    })
+  }
+  
+  removeProductCart (productId) {
         const { cart } = this.state
 
         this.setState({
@@ -45,39 +90,34 @@ class Main extends React.Component {
         })
     }
 
-  addProductCart (product) {
-      const { cart } = this.state
-      product = {...product}
-
-      this.setState({
-        cart: {
-          products: [...cart.products, product]
-        }
-      })
-    }
-
-  removeProductCart (productId) {
-      const { cart } = this.state
-
-      this.setState({
-        cart: {
-          ...cart,
-          products: cart.products.filter(product => product._id !== productId)
-        }
-      })
-    }
-
   render () {
-        const { cart } = this.state
-       
-        return (      
-        <main>
-          <Switch>
-            <Route exact path='/' component={Product}/>
-            <Route path='/checkout' component={Checkout}/>
-            <Route path='/cart' component={Cart}/>
-            <Route path='/product/:id' component={ProductDetails}/>
-          </Switch>
+    const { cart, products, modalProduct } = this.state
+    
+    return (      
+      <main>
+        <div className="products">
+          {
+            products.all().map(product => (
+                <Product
+                  key={product.name}
+                  product={product}
+                  onClick={() => this.handleModal(product)}
+                />
+            ))
+          }
+        </div>
+        {modalProduct.visible &&
+          <Modal visible={modalProduct.visible}>
+            <Product product={modalProduct.product}>
+              <button className="product-close" onClick={this.closeModal}>&times;</button>
+              <div className="product-info">
+                <small>{modalProduct.product.category} - vendido por: <strong>vendedor</strong></small>
+                  {modalProduct.product.description}
+                </div>
+              <Button onClick={() => this.addProductCart(modalProduct.product)}>Comprar</Button>
+            </Product>
+          </Modal>
+        }
           <Cart
             products={cart.products}
           />
