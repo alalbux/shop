@@ -3,20 +3,21 @@ import PropTypes from 'prop-types';
 import Product from './Product';
 import Button from './Button';
 
-const Cart = ({products, removeProduct}) => {
+const Cart = ({products, removeProductCart}) => {
   const total = products.map(product => product.price).reduce((previousPrice, currentPrice) => previousPrice + currentPrice, 0)
 
   return (
     <div className="cart">
-      <div>
-        <h3>{products.length ? `Carrinho (${products.length})` : 'Seu carrinho está vazio :('}</h3>
+      <div className="header">
+        <h3>Carrinho</h3>
+        <h4>{products.length ? `Itens na lista (${products.length})` : 'Seu carrinho está vazio :('}</h4>
       </div>
       <div className="products-container">  
         <div className="products">
             {
             products.map(product => (
                 <Product key={product.id} product={product}>
-                <button onClick={() => removeProduct(product.id)} className="remove">&times;</button>
+                <button onClick={() => removeProductCart(product.id)} className="remove">&times;</button>
                 </Product>
             ))
             }
@@ -25,11 +26,10 @@ const Cart = ({products, removeProduct}) => {
         <div className="total">
             <div className="cart-price">
             <p>
-                Total
-                <strong>{total}</strong>
+                Total: <strong>R$ {total}</strong>
             </p>
             </div>
-            <Button disabled={(total <= 0) && 'disabled'}>Finalizar compra</Button>
+            <Button className="finalizar" disabled={(total <= 0) && 'disabled'}>Finalizar compra</Button>
         </div>
       </div>
     </div>
@@ -38,7 +38,6 @@ const Cart = ({products, removeProduct}) => {
 
 Cart.propTypes = {
   products: PropTypes.array.isRequired,
-  removeProduct: PropTypes.func.isRequired,
 }
 
 Cart.defaultProps = {

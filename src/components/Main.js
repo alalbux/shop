@@ -1,5 +1,5 @@
 import React from 'react';
-import Api from './Api';
+import ProductAPI from './Api';
 import Product  from './Product';
 import Cart from './Cart';
 import Button from './Button';
@@ -10,7 +10,7 @@ class Main extends React.Component {
     super()
 
     this.state = {
-      products: Api,
+      products: ProductAPI,
       
       modalProduct: {
         product: {},
