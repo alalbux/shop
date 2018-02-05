@@ -7,29 +7,30 @@ const Cart = ({products, removeProduct}) => {
   const total = products.map(product => product.price).reduce((previousPrice, currentPrice) => previousPrice + currentPrice, 0)
 
   return (
-    <div>
+    <div className="cart">
       <div>
         <h3>{products.length ? `Carrinho (${products.length})` : 'Seu carrinho está vazio :('}</h3>
       </div>
-
-      <div className="products">
-        {
-          products.map(product => (
-            <Product key={product._id} product={product}>
-              <button onClick={() => removeProduct(product._id)} className="product-remove">&times;</button>
-            </Product>
-          ))
-        }
-      </div>
-
-      <div className="total">
-        <div className="cart-price">
-          <p>
-            Total
-            <strong>{total}</strong>
-          </p>
+      <div className="products-container">  
+        <div className="products">
+            {
+            products.map(product => (
+                <Product key={product.id} product={product}>
+                <button onClick={() => removeProduct(product.id)} className="product-remove">&times;</button>
+                </Product>
+            ))
+            }
         </div>
-        <Button disabled={(total <= 0) && 'disabled'}>Finalizar compra</Button>
+
+        <div className="total">
+            <div className="cart-price">
+            <p>
+                Total
+                <strong>{total}</strong>
+            </p>
+            </div>
+            <Button disabled={(total <= 0) && 'disabled'}>Finalizar compra</Button>
+        </div>
       </div>
     </div>
   )
@@ -37,7 +38,7 @@ const Cart = ({products, removeProduct}) => {
 
 Cart.propTypes = {
   products: PropTypes.array.isRequired,
-  //removeProduct: PropTypes.func.isRequired,
+  removeProduct: PropTypes.func.isRequired,
 }
 
 Cart.defaultProps = {

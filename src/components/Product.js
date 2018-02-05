@@ -1,25 +1,20 @@
 import React from 'react';
-import ProductAPI from '../api';
-import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-const Product = () => (
-  <div>
-    <ul className='products'>
-      {
-        ProductAPI.all().map(p => (
-          <li key={p.id}>
-            <Link product={p} to={`/product/${p.id}`}>
-              <div className='item'>
-                <h2 className='title'>{p.name}</h2> 
-                <p className='price'>{p.price}</p>
-              </div>
-            </Link>
-          </li>
-        ))
-      }
-    </ul>
+const Product = ({product, children, onClick}) => (
+  <div className="item" onClick={onClick}>
+      <h2 className="product-title">{product.name}</h2>
+      <strong className="product-price">{product.price}</strong>
+
+      {children}  
   </div>
-  
 )
+console.log(Product.product);
+
+Product.propTypes = {
+  onClick: PropTypes.func,
+  children: PropTypes.oneOfType([PropTypes.array, PropTypes.element]),
+  product: PropTypes.object.isRequired
+}
 
 export default Product
