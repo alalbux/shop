@@ -25,6 +25,7 @@ class Main extends React.Component {
     }
 
     this.handleModal = this.handleModal.bind(this)
+    this.checkout = this.checkout.bind(this);
     this.addCart = this.addCart.bind(this)
     this.closeModal = this.closeModal.bind(this)
     this.toggleVisibility = this.toggleVisibility.bind(this)
@@ -78,6 +79,32 @@ class Main extends React.Component {
       }
     })
   }
+
+  checkout (amount) {
+    amount = Math.round(amount * 100)
+
+    const checkout = new window.PagarMeCheckout.Checkout({
+      encryption_key: 'teste',
+      success: transaction => {
+        console.log(transaction);
+      }
+    })
+
+    checkout.open({
+      amount,
+      buttonText: 'Pagar',
+      customerData: 'true',
+      paymentMethods: 'credit_card',
+      maxInstallments: 12,
+      uiColor: '#444444',
+      createToken: 'true',
+      interestRate: 12,
+      freeInstallments: 12,
+      defaultInstallment: 5,
+      headerText: 'Finalizar compra.'
+    })
+  }
+ 
   
   removeCart (productId) {
         const { cart } = this.state
