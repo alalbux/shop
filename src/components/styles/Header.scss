@@ -1,0 +1,22 @@
+header {
+    border-bottom: 1px solid #aaaaaa;
+    padding: 16px 0;
+    nav {
+        ul {
+            list-style: none;
+            padding: 0;
+    
+            li {
+                display: inline-block;
+                padding: 8px 16px;
+            }
+    
+            a {
+                text-decoration: none; 
+                color: #000000;
+                font-weight: 600;
+                font-size: 18px;  
+            }
+        }
+    }
+}

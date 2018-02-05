@@ -1,0 +1,22 @@
+.products {
+    list-style: none;
+    padding: 16px 185px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    .item {
+        width: 150px;
+        height: 150px;
+        margin: 16px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid #cccccc;
+        text-align: center;
+        cursor: pointer;
+    }
+    .price {
+        display: block;
+    }
+}
