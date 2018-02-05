@@ -1,6 +1,7 @@
 import React from 'react';
 import ProductAPI from './Api';
 import Product  from './Product';
+import ProductDetails from './ProductDetails';
 import Cart from './Cart';
 import Button from './Button';
 import Modal from './Modal';
@@ -110,7 +111,13 @@ class Main extends React.Component {
             <Product product={modalProduct.product}>
               <button className="close" onClick={this.closeModal}>&times;</button>
               <div className="info">
-                {modalProduct.product.name}
+              {
+                ProductAPI.get(modalProduct.product.id).map(p => (
+                    <ProductDetails
+                      product={p}
+                    />
+                ))
+              }
               </div>
               <Button onClick={() => this.addProductCart(modalProduct.product)}>Comprar</Button>
             </Product>
