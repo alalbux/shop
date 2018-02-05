@@ -1,6 +1,5 @@
 import React from 'react';
 import ProductAPI from '../api';
-import { Switch, Route } from 'react-router-dom';
 import Product  from './Product';
 import Cart from './Cart';
 import Button from './Button';
