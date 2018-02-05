@@ -6,30 +6,64 @@
     width: 300px;
     border-top: 1px solid #cccccc;
     height: 100%;
+    .header {
+        background: #444444;
+        text-align: center;
+        height: 61px;
+        padding: 16px;
+        color: #ffffff;
+        h3 {
+            margin-top: 0;
+        }
+    }
     .products-container {          
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        height:  calc(300px -100%);
+        display: block;
+        height:  calc(100% - 234px);
         position: relative;
         overflow-y: scroll;
+        background: #B8B8B8;
     }
-    .products {
+    .products {    
         padding: 16px;
+        width: 250px;
+        height: calc(100% - 234px);
+
+        .item {
+            width: auto;
+            height: 30px;
+            margin: 8px;
+            padding: 8px;
+            flex-direction: row;
+            border: none;
+            text-align: left;
+            align-items: center;
+            .title  {
+                margin: 0;
+            }
+            .price  { 
+                width: 60px;
+                font-size: 14px;
+            }
+        }
+
     }
     .total {
         position: fixed;
         bottom: 0;
-        height: 150px;
+        height: 140px;
         width: 300px;
-        background: #cccccc;    
+        background: #cccccc;
+        text-align: center;
+        .cart-price {
+            padding: 20px;
+        }
+        .finalizar {
+            width: 100%;
+            color: #ffffff;
+            background: #000000;
+            padding: 20px;
+            font-weight: bold;
+        }
     }
-    .item {
-        width: auto;
-        height: auto;
-        display: flex;
-        flex-direction: row;
-        border: none;
-    }
-    .price  { display: inline}
+    
 }
