@@ -1,11 +1,9 @@
 import React from 'react';
 import ProductAPI from '../api';
-import Cart from './Cart';
 import { Link } from 'react-router-dom';
 import Button from './Button';
 
-
-class ProductDetails extends React.PureComponent {
+class ProductDetails extends React.Component {
   constructor () {
     super()
 

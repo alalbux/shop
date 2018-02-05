@@ -36,15 +36,11 @@ const Cart = ({products, removeProduct}) => {
 }
 
 Cart.propTypes = {
-  visible: PropTypes.bool,
   products: PropTypes.array.isRequired,
-  handleClose: PropTypes.func.isRequired,
-  removeProduct: PropTypes.func.isRequired,
-  handleCheckout: PropTypes.func.isRequired
+  //removeProduct: PropTypes.func.isRequired,
 }
 
 Cart.defaultProps = {
-  visible: false,
   products: []
 }
 
