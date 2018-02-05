@@ -92,6 +92,8 @@ class Main extends React.Component {
 
   render () {
     const { cart, products, modalProduct } = this.state
+    console.log(products);
+    console.log(modalProduct.product)
     
     return (      
       <main>
@@ -111,15 +113,23 @@ class Main extends React.Component {
             <Product product={modalProduct.product}>
               <button className="close" onClick={this.closeModal}>&times;</button>
               <div className="info">
-              {
-                ProductAPI.get(modalProduct.product.id).map(p => (
-                    <ProductDetails
-                      product={p}
-                    />
-                ))
-              }
+                <h4>Detalhes do Album</h4>
+                <ul className="details">
+                    {
+                      modalProduct.product.details.map(p => (
+                          <li>
+                            <ProductDetails
+                            key={p.name}
+                            product={p}
+                          />
+                          </li>
+                      ))
+                    }
+                </ul>
               </div>
-              <Button onClick={() => this.addProductCart(modalProduct.product)}>Comprar</Button>
+            <div className="compra">
+               <Button onClick={() => this.addProductCart(modalProduct.product)}>Comprar</Button>
+            </div>
             </Product>
           </Modal>
         }
