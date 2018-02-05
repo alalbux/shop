@@ -25,10 +25,10 @@ class Main extends React.Component {
     }
 
     this.handleModal = this.handleModal.bind(this)
-    this.addProductCart = this.addProductCart.bind(this)
+    this.addCart = this.addCart.bind(this)
     this.closeModal = this.closeModal.bind(this)
     this.toggleVisibility = this.toggleVisibility.bind(this)
-    this.removeProductCart = this.removeProductCart.bind(this)
+    this.removeCart = this.removeCart.bind(this)
   }
 
   handleModal (product) {
@@ -42,7 +42,7 @@ class Main extends React.Component {
     })
   }
 
-  addProductCart (product) {
+  addCart (product) {
     const { cart, modalProduct } = this.state
     product = {...product}
 
@@ -79,7 +79,7 @@ class Main extends React.Component {
     })
   }
   
-  removeProductCart (productId) {
+  removeCart (productId) {
         const { cart } = this.state
 
         this.setState({
@@ -92,9 +92,7 @@ class Main extends React.Component {
 
   render () {
     const { cart, products, modalProduct } = this.state
-    console.log(products);
-    console.log(modalProduct.product)
-    
+
     return (      
       <main>
         <div className="products">
@@ -128,13 +126,14 @@ class Main extends React.Component {
                 </ul>
               </div>
             <div className="compra">
-               <Button onClick={() => this.addProductCart(modalProduct.product)}>Comprar</Button>
+               <Button onClick={() => this.addCart(modalProduct.product)}>Comprar</Button>
             </div>
             </Product>
           </Modal>
         }
           <Cart
             products={cart.products}
+            remove={this.removeCart}
           />
         </main>
     )
