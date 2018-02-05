@@ -110,8 +110,8 @@ class Main extends React.Component {
             <Product product={modalProduct.product}>
               <button className="close" onClick={this.closeModal}>&times;</button>
               <div className="info">
-                  {modalProduct.product.name}
-                </div>
+                {modalProduct.product.name}
+              </div>
               <Button onClick={() => this.addProductCart(modalProduct.product)}>Comprar</Button>
             </Product>
           </Modal>
