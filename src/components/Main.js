@@ -24,15 +24,15 @@ class Main extends React.Component {
       }
     }
 
-    this.handleModal = this.handleModal.bind(this)
+    this.modal = this.modal.bind(this)
     this.checkout = this.checkout.bind(this);
     this.addCart = this.addCart.bind(this)
     this.closeModal = this.closeModal.bind(this)
-    this.toggleVisibility = this.toggleVisibility.bind(this)
+    this.toggle = this.toggle.bind(this)
     this.removeCart = this.removeCart.bind(this)
   }
 
-  handleModal (product) {
+  modal (product) {
     const { modalProduct } = this.state
 
     this.setState({
@@ -58,7 +58,7 @@ class Main extends React.Component {
     })
   }
 
-  toggleVisibility () {
+  toggle () {
     const { cart } = this.state
 
     this.setState({
@@ -80,6 +80,16 @@ class Main extends React.Component {
     })
   }
 
+  removeCart (productId) {
+      const { cart } = this.state
+
+      this.setState({
+        cart: {
+          ...cart,
+          products: cart.products.filter(product => product.id !== productId)
+        }
+      })
+  }
   checkout (amount) {
     amount = Math.round(amount * 100)
 
@@ -104,19 +114,6 @@ class Main extends React.Component {
       headerText: 'Finalizar compra.'
     })
   }
- 
-  
-  removeCart (productId) {
-        const { cart } = this.state
-
-        this.setState({
-          cart: {
-            ...cart,
-            products: cart.products.filter(product => product.id !== productId)
-          }
-        })
-    }
-
   render () {
     const { cart, products, modalProduct } = this.state
 
@@ -128,7 +125,7 @@ class Main extends React.Component {
                 <Product
                   key={product.name}
                   product={product}
-                  onClick={() => this.handleModal(product)}
+                  onClick={() => this.modal(product)}
                 />
             ))
           }
