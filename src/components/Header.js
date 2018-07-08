@@ -4,7 +4,7 @@ const Header = () => (
   <header>
     <nav>
       <ul>
-        <li><h1>Music Shop</h1></li>
+        <li><h1>Shop</h1></li>
       </ul>
     </nav>
   </header>
